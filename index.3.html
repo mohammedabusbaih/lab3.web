@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript DOM Lab - 40 Minis</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .highlight { background-color: yellow; }
+    .active { border: 2px solid red; }
+    .card { border: 1px solid #ccc; padding: 10px; margin: 5px; border-radius: 8px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <h1 id="title">DOM Practice Lab</h1>
+  <h2>Sample Subheading</h2>
+  
+  <p>This is paragraph one.</p>
+  <p class="highlight">This is paragraph two with highlight class.</p>
+  <p>This is paragraph three.</p>
+
+  <div id="container">
+    <p>Inside a div container</p>
+  </div>
+
+  <ul id="list">
+    <li>List Item 1</li>
+    <li>List Item 2</li>
+    <li>List Item 3</li>
+  </ul>
+
+  <img id="sampleImage" src="https://placehold.co/100x100" alt="Sample">
+
+  <div id="output"></div>
+
+  <button id="mainButton">Click Me</button>
+  <input type="text" id="userInput" placeholder="Type something">
+  <button id="displayButton">Display Text</button>
+
+  <script>
+ 
+    document.getElementById("title").textContent = "My DOM Lab Practice";
+
+    let paragraphs = document.querySelectorAll("p");
+    paragraphs.forEach(p => {
+      p.style.color = "blue";
+    });
+
+   
+    document.getElementById("mainButton").addEventListener("click", function() {
+      let newP = document.createElement("p");
+      newP.textContent = "New paragraph added by clicking the button!";
+      document.body.appendChild(newP);
+    });
+
+  
+    document.getElementById("displayButton").addEventListener("click", function() {
+      let inputText = document.getElementById("userInput").value;
+      document.getElementById("output").textContent = "You typed: " + inputText;
+    });
+
+    document.getElementById("sampleImage").addEventListener("click", function() {
+      this.src = "https://placehold.co/150x150";
+    });
+
+    let listItems = document.querySelectorAll("#list li");
+    listItems.forEach((li, index) => {
+      li.textContent = "Item " + (index + 1) + " updated";
+    });
+
+    
+    let firstInContainer = document.querySelector("#container p");
+    firstInContainer.style.backgroundColor = "lightgreen";
+  </script>
+</body>
+</html>
